@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Trading Application</title>
+  <link rel="stylesheet" href="trading.css">
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <nav>
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <h1>Welcome to our Share Trading Application</h1>
+  <p>Your gateway to smart investments.</p>
+  <a href="#signup" class="cta-button">Get Started</a>
+</header>
+
+<!-- Features -->
+<section id="features">
+  <h2>Key Features</h2>
+  <ul>
+    <li>Real-time Stock Data</li>
+    <li>Advanced Analytics Tools</li>
+    <li>Secure Trading Platform</li>
+    <li>User-Friendly Interface</li>
+  </ul>
+</section>
+
+<!-- About Us -->
+<section id="about">
+  <h2>About Us</h2>
+  <p>We are dedicated to providing you with the best share trading experience, leveraging cutting-edge technology and expertise.</p>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>If you have any questions or inquiries, feel free to contact us at <a href="mailto:info@example.com">info@example.com</a>.</p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2023 Share Trading Application. All rights reserved.</p>
+</footer>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>
+        Share trading involves risks and may not be suitable for everyone.
+        Make sure to research and understand the risks involved before investing.
+      </p>
+    </div>
+  </div>
+<script>
+// JavaScript to handle modal functionality
+const modal = document.getElementById('myModal');
+const closeButton = document.getElementsByClassName('close')[0];
+let warningStatus = window.localStorage.getItem('updateWarningStatus');
+
+function showShareTradingRiskAlert() {
+try {
+JSON.parse(warningStatus).showed ? () => {modal.style.display = 'none';} :() => {modal.style.display = 'block';} ;     
+    
+} catch (error) {
+console.log(error)    
+}
+    
+}
+
+closeButton.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+
+// Call the function to show the alert
+document.body.onload = function(){
+    setTimeout(showShareTradingRiskAlert, 5000);
+}
+
+function updateWarningStatus(){
+try {
+    let getStatus = window.localStorage.getItem('updateWarningStatus');
+    if(!JSON.parse(getStatus).showed){
+        let setStatus = window.localStorage.setItem('updateWarningStatus', JSON.stringify({showed:true}));
+    
+    }else{
+        let setStatus = window.localStorage.setItem('updateWarningStatus', JSON.stringify({showed:true}));
+    }
+    
+
+} catch (error) {
+    
+}
+console.log(window.localStorage.getItem('updateWarningStatus'));
+}
+
+
+</script>
+</body>
+</html>
